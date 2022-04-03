@@ -51,11 +51,12 @@ class App extends React.Component {
         switch(output) {
           case "positive": color = "green";break;
           case "negative": color = "red";break;
-          default: color = "yello";
+          default: color = "yellow";
         }
         output = <div style={{color:color,fontSize:20}}>{output}</div>
         this.setState({sentimentOutput:output});
-      })});
+      })
+    });
   }
 
   sendForEmotionAnalysis = () => {
@@ -66,9 +67,10 @@ class App extends React.Component {
     url = url+"/" + mode + "/emotion?"+ mode + "="+document.getElementById("textinput").value;
 
     fetch(url).then((response)=>{
-      response.json().then((data)=>{
-      this.setState({sentimentOutput:<EmotionTable emotions={data}/>});
-  })})  ;
+        response.json().then((data)=>{
+            this.setState({sentimentOutput:<EmotionTable emotions={data}/>});
+        })
+    });
   }
   
 
